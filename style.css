@@ -73,7 +73,7 @@ header {
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-/* Luxury Hero with AI Image */
+/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -104,26 +104,19 @@ header {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.badge {
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid var(--gold-solid);
-    color: var(--gold-solid);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    margin-bottom: 2.5rem;
-    display: inline-block;
-    backdrop-filter: blur(5px);
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
 }
 
-.hero h1 {
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    font-weight: 900;
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
 }
 
 .text-gold {
@@ -134,24 +127,17 @@ header {
     filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
 }
 
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-dim);
-    max-width: 750px;
-    margin: 0 auto 4rem;
-    font-weight: 300;
-}
-
 .btn {
-    padding: 1.3rem 3.5rem;
+    padding: 1.2rem 3rem;
     border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-size: 0.85rem;
     transition: var(--transition);
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn-gold {
@@ -162,27 +148,26 @@ header {
 }
 
 .btn-gold:hover {
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-5px);
     box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
 }
 
-/* Glassmorphism Section */
+/* Grid Sections */
 .section {
-    padding: 10rem 10%;
-    position: relative;
+    padding: 8rem 8%;
     background: var(--black-matte);
 }
 
 .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 5rem;
+    font-size: 2.8rem;
+    margin-bottom: 4rem;
     text-align: center;
 }
 
 .glass-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
 }
 
 .glass-card {
@@ -190,39 +175,109 @@ header {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    padding: 4.5rem 3rem;
-    border-radius: 30px;
+    padding: 3.5rem 2.5rem;
+    border-radius: 24px;
     transition: var(--transition);
-    text-align: center;
 }
 
 .glass-card:hover {
-    border-color: var(--white);
     background: rgba(212, 175, 55, 0.05);
-    transform: translateY(-15px) rotateX(5deg);
+    transform: translateY(-10px);
+    border-color: var(--white);
 }
 
 .glass-card h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--white);
-    font-style: italic;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    color: var(--gold-solid);
 }
 
-.glass-card p {
-    font-size: 1rem;
-    opacity: 0.6;
-    font-weight: 300;
+.glass-card ul {
+    list-style: none;
+    text-align: left;
 }
 
-/* Luxury Footer */
+.glass-card li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+}
+
+.glass-card li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--gold-solid);
+}
+
+/* Comparison Table */
+.comparison-container {
+    overflow-x: auto;
+    margin-top: 3rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    background: var(--dark-glass);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.comparison-table th {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold-solid);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* Sticky WhatsApp */
+.whatsapp-fixed {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #25D366;
+    color: white;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 99999;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.whatsapp-fixed:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.whatsapp-fixed img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Footer */
 footer {
-    padding: 8rem 10% 4rem;
-    background: #000;
+    padding: 6rem 8% 3rem;
     border-top: 1px solid var(--glass-border);
+    background: #000;
 }
 
-.footer-content {
+.footer-main {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -230,35 +285,26 @@ footer {
     margin-bottom: 4rem;
 }
 
-.footer-brand h4 {
-    font-size: 1.8rem;
+.footer-col h4 {
     margin-bottom: 1.5rem;
-    color: var(--white);
-}
-
-.footer-info p {
-    font-size: 0.9rem;
-    margin-bottom: 0.8rem;
-    color: var(--text-dim);
-}
-
-.footer-info strong {
     color: var(--gold-solid);
-    text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 1rem;
     letter-spacing: 2px;
-    display: block;
-    margin-bottom: 4px;
+}
+
+.footer-col p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 3rem;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 2rem;
     font-size: 0.8rem;
     color: rgba(255,255,255,0.3);
-    letter-spacing: 1px;
 }
 
 .footer-bottom a {
@@ -268,11 +314,12 @@ footer {
 }
 
 .footer-bottom a:hover {
-    color: var(--gold-solid);
+    color: var(--white);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .nav-links { display: none; }
-    .hero h1 { font-size: 3rem; }
-    .footer-content { flex-direction: column; text-align: center; }
+    .hero h1 { font-size: 2.8rem; }
+    .section-title { font-size: 2rem; }
+    .footer-main { flex-direction: column; text-align: center; }
 }
