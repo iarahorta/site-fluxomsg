@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --gold: linear-gradient(135deg, #A67C00 0%, #D4AF37 50%, #FFD700 100%);
-    --gold-solid: #C5A021;
-    --dark-bg: #000000;
-    --dark-card: rgba(15, 15, 15, 0.6);
-    --white: #FFFFFF;
-    --off-white: #E5E5E5;
-    --glass-border: rgba(255, 255, 255, 0.05);
-    --transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+    --gold: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    --gold-solid: #D4AF37;
+    --black-matte: #050505;
+    --dark-glass: rgba(15, 15, 15, 0.7);
+    --glass-border: rgba(212, 175, 55, 0.3);
+    --white: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.6);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -19,61 +19,61 @@
 }
 
 body {
-    background-color: var(--dark-bg);
+    background-color: var(--black-matte);
     color: var(--white);
     font-family: 'Inter', sans-serif;
-    line-height: 1.8;
+    line-height: 1.7;
     overflow-x: hidden;
-    letter-spacing: 0.02em;
 }
 
-h1, h2, h3, .logo-text {
+h1, h2, h3 {
     font-family: 'Playfair Display', serif;
-    font-weight: 700;
 }
 
-/* Luxury Navigation */
+/* Glassmorphism Navigation */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 2rem 10%;
+    padding: 1.5rem 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--glass-border);
     z-index: 10000;
-    border-bottom: 0.5px solid var(--glass-border);
 }
 
 .logo img {
-    height: 40px;
+    height: 45px;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
 }
 
 .nav-links {
     display: flex;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--white);
-    font-size: 0.75rem;
-    font-weight: 400;
+    font-size: 0.85rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 4px;
-    opacity: 0.5;
+    letter-spacing: 2px;
+    opacity: 0.6;
     transition: var(--transition);
 }
 
 .nav-links a:hover {
     opacity: 1;
     color: var(--gold-solid);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-/* Luxury Hero */
+/* Luxury Hero with AI Image */
 .hero {
     height: 100vh;
     display: flex;
@@ -81,41 +81,49 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 15%;
+    padding: 0 10%;
     background: url('assets/hero-bg.png') no-repeat center center/cover;
     position: relative;
-    overflow: hidden;
 }
 
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, #000 100%);
-    z-index: 1;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, var(--black-matte) 100%);
 }
 
 .hero-content {
     z-index: 2;
-    max-width: 1100px;
+    max-width: 1000px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .badge {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--gold-solid);
     color: var(--gold-solid);
-    font-size: 0.65rem;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 6px;
-    margin-bottom: 3rem;
+    letter-spacing: 4px;
+    margin-bottom: 2.5rem;
     display: inline-block;
+    backdrop-filter: blur(5px);
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 1.05;
-    margin-bottom: 2.5rem;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
     font-weight: 900;
-    font-style: italic;
 }
 
 .text-gold {
@@ -123,117 +131,148 @@ header {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
 }
 
 .hero p {
-    font-size: 1.1rem;
-    color: var(--off-white);
-    max-width: 700px;
+    font-size: 1.25rem;
+    color: var(--text-dim);
+    max-width: 750px;
     margin: 0 auto 4rem;
     font-weight: 300;
-    opacity: 0.6;
 }
 
 .btn {
-    padding: 1.5rem 3.5rem;
-    border-radius: 0; /* Luxury style usually uses sharp corners or very subtle ones */
-    font-weight: 500;
+    padding: 1.3rem 3.5rem;
+    border-radius: 8px;
+    font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.7rem;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
     transition: var(--transition);
-    border: 0.5px solid var(--gold-solid);
+    display: inline-block;
 }
 
 .btn-gold {
-    background: var(--gold-solid);
+    background: var(--gold);
     color: #000;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+    border: none;
 }
 
 .btn-gold:hover {
-    background: transparent;
-    color: var(--gold-solid);
-    transform: scale(1.05);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--white);
-    border: 0.5px solid var(--white);
+/* Glassmorphism Section */
+.section {
+    padding: 10rem 10%;
+    position: relative;
+    background: var(--black-matte);
 }
 
-.btn-outline:hover {
-    border-color: var(--gold-solid);
-    color: var(--gold-solid);
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+    text-align: center;
 }
 
-/* Section Luxury Cards */
-.features {
-    padding: 15rem 10%;
+.glass-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 5rem;
-    background: #000;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
 }
 
 .glass-card {
-    padding: 5rem 3rem;
-    border: 0.5px solid var(--glass-border);
+    background: var(--dark-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    padding: 4.5rem 3rem;
+    border-radius: 30px;
     transition: var(--transition);
     text-align: center;
 }
 
 .glass-card:hover {
-    border-color: var(--gold-solid);
-    background: rgba(255,255,255,0.02);
+    border-color: var(--white);
+    background: rgba(212, 175, 55, 0.05);
+    transform: translateY(-15px) rotateX(5deg);
 }
 
 .glass-card h3 {
-    margin-bottom: 1.5rem;
     font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
     font-style: italic;
 }
 
 .glass-card p {
-    font-size: 0.9rem;
-    opacity: 0.4;
+    font-size: 1rem;
+    opacity: 0.6;
     font-weight: 300;
 }
 
+/* Luxury Footer */
 footer {
-    padding: 10rem 10% 5rem;
+    padding: 8rem 10% 4rem;
     background: #000;
+    border-top: 1px solid var(--glass-border);
 }
 
-.footer-col h4 {
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-brand h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dim);
+}
+
+.footer-info strong {
     color: var(--gold-solid);
-    font-size: 0.65rem;
-    letter-spacing: 5px;
-    margin-bottom: 3rem;
     text-transform: uppercase;
-}
-
-.info-item .label {
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    opacity: 0.3;
-}
-
-.info-item .val {
-    font-size: 0.85rem;
-    font-weight: 300;
-    opacity: 0.8;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
 }
 
 .footer-bottom {
-    border-top: 0.5px solid var(--glass-border);
-    padding-top: 4rem;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    opacity: 0.3;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+}
+
+.footer-bottom a {
+    color: inherit;
+    text-decoration: none;
+    margin-left: 2rem;
+}
+
+.footer-bottom a:hover {
+    color: var(--gold-solid);
 }
 
 @media (max-width: 900px) {
     .nav-links { display: none; }
+    .hero h1 { font-size: 3rem; }
+    .footer-content { flex-direction: column; text-align: center; }
 }
